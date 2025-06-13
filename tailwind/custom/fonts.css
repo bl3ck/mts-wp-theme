@@ -1,0 +1,36 @@
+/**
+ * Custom `@font-face` rules
+ *
+ * These will be added immediately before Tailwind’s `base` layer.
+ */
+@font-face {
+    font-family: 'Cardo';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("./fonts/Cardo.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Cardo';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("./fonts/Cardo_Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Canela';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("./fonts/canelaweb_bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url("./fonts/LeagueSpartan.ttf") format("truetype");
+}
