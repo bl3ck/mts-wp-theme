@@ -475,6 +475,22 @@ $apply_link   = get_field('application_link');
     </div>
 </section>
 
+<section id="newsletter">
+    <div class="page-container border-t-[1px] border-black/10 md:pb-0">
+        <div class="grid sm:grid-cols-2 gap-8">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Be Part of a Global Dreaming Tribe</h2>
+                <p class="text-gray-600 mb-4">Stay connected to the heartbeat of our community with Dream Lounge, a thoughtfully curated newsletter that illuminates the paths of achievers, offers practical wisdom, and connects you with a global tribe of dreamers.</p>
+                <div class="max-w-2xl mx-auto mt-6 contact-form bg-mt-cream p-6 sm:p-8 rounded-xl shadow-md">
+                    <?php echo do_shortcode('[sibwp_form id=1]'); ?>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/imgs/mt-newsletter.png'); ?>" alt="Subscribe to our Newsletter" class="w-full h-full object-contain">
+            </div>
+        </div>
+    </div>
+</section>
 
 <section id="faqs" class="bg-mt-cream">
     <div class="page-container space-y-28">

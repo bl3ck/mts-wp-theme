@@ -210,3 +210,11 @@ header {
 		@apply !to-green-700 hover:to-green-500;
 	}
 }
+
+.sib_signup_box_inside_1 {
+	@apply flex -mt-6 flex-col gap-4;
+
+	.name-section{
+		@apply flex flex-col sm:grid sm:grid-cols-2 gap-4;
+	}
+}
