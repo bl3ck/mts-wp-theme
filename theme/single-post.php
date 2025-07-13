@@ -87,6 +87,12 @@ while (have_posts()) : the_post();
                 <?php endif; ?>
             </div>
 
+            <!-- News Letter Signup -->
+            <div class="max-w-2xl mx-auto mt-16 contact-form bg-mt-cream p-6 sm:p-12 rounded-xl shadow-md">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Be Part of a Global Dreaming Tribe</h2>
+                <?php echo do_shortcode('[sibwp_form id=1]'); ?>
+            </div>
+
             <!-- Author Bio -->
             <div class="max-w-2xl hidden mx-auto mt-16 pt-8 border-t border-gray-200">
                 <div class="flex items-start gap-4">
