@@ -87,20 +87,20 @@ add_action( 'init', 'create_mt_winner_type' );
 // Stories of Impact
 function create_mt_impact_stories_type() {
     $labels = array(
-        'name'               => 'Impact Stories',
-        'singular_name'      => 'Impact Story',
-        'menu_name'          => 'Impact Stories',
+        'name'               => 'Stories of Impact',
+        'singular_name'      => 'Story of Impact',
+        'menu_name'          => 'Stories of Impact',
         'add_new'            => 'Add New',
-        'add_new_item'       => 'Add New Impact Story',
+        'add_new_item'       => 'Add New Story of Impact',
         'edit'               => 'Edit',
-        'edit_item'          => 'Edit Impact Story',
-        'new_item'           => 'New Impact Story',
+        'edit_item'          => 'Edit Story of Impact',
+        'new_item'           => 'New Story of Impact',
         'view'               => 'View',
-        'view_item'          => 'View Impact Story',
-        'search_items'       => 'Search Impact Stories',
-        'not_found'          => 'No Impact Stories found',
-        'not_found_in_trash' => 'No Impact Stories found in trash',
-        'parent'             => 'Parent Impact Story'
+        'view_item'          => 'View Story of Impact',
+        'search_items'       => 'Search Stories of Impact',
+        'not_found'          => 'No Stories of Impact found',
+        'not_found_in_trash' => 'No Stories of Impact found in trash',
+        'parent'             => 'Parent Story of Impact'
     );
 
     $args = array(

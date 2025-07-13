@@ -139,7 +139,7 @@ $apply_link   = get_field('application_link');
                     <p class="opacity-80">Discover success stories of graduates building futures through education.</p>
                     <ul>
                         <li><a href="<?php echo get_post_type_archive_link('winner') ?>">Winners</a></li>
-                        <li><a href="<?php echo get_post_type_archive_link('impact-story') ?>">Success Stories</a></li>
+                        <li><a href="<?php echo get_post_type_archive_link('impact-story') ?>">Stories of Impact</a></li>
                         <li><a href="<?php echo get_page_url_by_title('Scholar Network') ?>">Scholar Network</a></li>
                     </ul>
                 </div>
@@ -244,7 +244,7 @@ $apply_link   = get_field('application_link');
     <div class="px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:max-w-6xl">
             <div>
-                <h2 class="font-mono text-xs/5 font-semibold tracking-widest text-gray-500 uppercase data-dark:text-gray-400">Impact Stories</h2>
+                <h2 class="font-mono text-xs/5 font-semibold tracking-widest text-gray-500 uppercase data-dark:text-gray-400">Unlocking Minds - Changing Worlds</h2>
                 <h3 class="mt-2 text-4xl text-gray-950 data-dark:text-white sm:text-5xl">Stories of Impact</h3>
             </div>
         </div>
