@@ -90,6 +90,7 @@ while (have_posts()) : the_post();
             <!-- News Letter Signup -->
             <div class="max-w-2xl mx-auto mt-16 contact-form bg-mt-cream p-6 sm:p-12 rounded-xl shadow-md">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Be Part of a Global Dreaming Tribe</h2>
+                <p class="mb-5">Connect. Grow. Inspire — Join Dream Lounge. Your monthly dose of stories, strategies, and scholarship support to help you rise.</p>
                 <?php echo do_shortcode('[sibwp_form id=1]'); ?>
             </div>
 

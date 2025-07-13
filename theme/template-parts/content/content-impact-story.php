@@ -80,7 +80,7 @@ $quote = get_field('short_quote');
 							get_the_title()
 						)
 					);
-	
+
 					wp_link_pages(
 						array(
 							'before' => '<div>' . __('Pages:', 'michael-taiwo-scholarship'),

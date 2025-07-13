@@ -45,6 +45,7 @@ function mytheme_create_pages_on_activation() {
         'How to apply',
         'Volunteer',
         'How we select',
+        'The Dream Lounge',
         'Scholar Network',
         'Contact Us',
         'Support'
