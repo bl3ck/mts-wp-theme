@@ -480,7 +480,7 @@ $apply_link   = get_field('application_link');
         <div class="grid sm:grid-cols-2 gap-8">
             <div class="mb-8">
                 <h4>Connect. Grow. Inspire — Join Dream Lounge</h4>
-                <p class="text-gray-600 mb-4">Stay connected to the heartbeat of our community with Dream Lounge, a thoughtfully curated newsletter that illuminates the paths of achievers, offers practical wisdom, and connects you with a global tribe of dreamers.</p>
+                <p>Stay connected to the heartbeat of our community with Dream Lounge, a thoughtfully curated newsletter that illuminates the paths of achievers, offers practical wisdom, and connects you with a global tribe of dreamers.</p>
                 <div class="max-w-2xl mx-auto mt-6 contact-form bg-mt-cream p-6 sm:p-8 rounded-xl shadow-md">
                     <?php echo do_shortcode('[sibwp_form id=1]'); ?>
                 </div>
