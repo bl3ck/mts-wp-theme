@@ -96,6 +96,7 @@ $current_year = date('Y');
 					<span class="font-bold text-xl hidden uppercase antialiased tracking-wider"><?php echo esc_html($site_name); ?></span>
 				</a>
 				<p class="py-8">The Michael Taiwo Scholarships Inc is  501(c)(3) nonprofit organization, EIN 88-1437535. Donations are tax-deductible.</p>
+				<?php echo do_shortcode('[paypal-donation]'); ?>
 				<nav class="flex mt-12 md:mb-0 gap-6 align-baseline text-white/60">
 					<?php
 					// Twitter/X

@@ -81,7 +81,7 @@ $apply_link   = get_field('application_link');
                                 <p class="text-nowrap leading-none">Apply for Scholarship</p>
                             </a>
                             <a class="button secondary-btn" href="/support">
-                                <p class=" text-nowrap leading-none">Support Our Mission</p>
+                                <p class=" text-nowrap leading-none">Donate</p>
                             </a>
                         </div>
                     </div>
