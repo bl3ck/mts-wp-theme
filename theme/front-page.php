@@ -115,7 +115,7 @@ $apply_link   = get_field('application_link');
                 <div class="flex flex-col gap-4">
                     <div class="border-[0.5px] border-gray-50 col-span-1 p-1 shadow-sm rounded-md h-full bg-gray-50/20">
                         <div class="overflow-hidden rounded-md aspect-video bg-gray-100 w-full h-full transition-all duration-300">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/imgs/mt-2.jpg'); ?>" alt="Our global impact" loading="lazy" class="w-full object-cover h-full" />
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/imgs/Michael-Taiwo-apply.jpg'); ?>" alt="Our global impact" loading="lazy" class="w-full object-cover h-full" />
                         </div>
                     </div>
                     <p class="font-sans text-2xl">Apply</p>
@@ -132,7 +132,7 @@ $apply_link   = get_field('application_link');
                 <div class="flex flex-col gap-4">
                     <div class="border-[0.5px] border-gray-50 col-span-1 p-1 shadow-sm rounded-md h-full bg-gray-50/20">
                         <div class="overflow-hidden rounded-md aspect-video bg-gray-100 w-full h-full transition-all duration-300">
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/imgs/mt-3.jpg'); ?>" alt="Our global impact" loading="lazy" class="w-full object-cover h-full" />
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/imgs/Michael-Taiwo-scholars.jpg'); ?>" alt="Our global impact" loading="lazy" class="w-full object-cover h-full" />
                         </div>
                     </div>
                     <p class="font-sans text-2xl">Our Scholars</p>
@@ -140,6 +140,7 @@ $apply_link   = get_field('application_link');
                     <ul>
                         <li><a href="<?php echo get_post_type_archive_link('winner') ?>">Winners</a></li>
                         <li><a href="<?php echo get_post_type_archive_link('impact-story') ?>">Stories of Impact</a></li>
+                        <li><a href="<?php echo get_post_type_archive_link('e-meet') ?>">MT E-Meet</a></li>
                         <li><a href="<?php echo get_page_url_by_title('Scholar Network') ?>">Scholar Network</a></li>
                     </ul>
                 </div>
