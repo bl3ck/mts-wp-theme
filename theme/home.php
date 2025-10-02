@@ -1,4 +1,10 @@
 <?php
+/**
+ * Template Name: Blog Home
+ *
+ * @package Michael_Taiwo_Scholarship
+ */
+
 get_header('blog');
 
 // Get the current page number for initial load

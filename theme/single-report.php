@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template Name: Single Report
+ *
+ * @package Michael_Taiwo_Scholarship
+ */
+
+get_header(); ?>
 
 <?php
 $pdf = get_field('pdf_report', get_the_ID())

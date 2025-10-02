@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template Name: Impact Stories Archive
+ *
+ * @package Michael_Taiwo_Scholarship
+ */
+
+get_header(); ?>
 
 <div class="page-container">
     <!-- <h1 class="text-4xl font-bold mb-8">Impact Stories</h1> -->

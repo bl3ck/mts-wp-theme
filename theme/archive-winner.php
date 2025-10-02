@@ -1,4 +1,10 @@
 <?php
+/**
+ * Template Name: Winners Archive
+ *
+ * @package Michael_Taiwo_Scholarship
+ */
+
 get_header();
 
 // Get Course terms

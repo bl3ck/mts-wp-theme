@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: MT Home Page
+ * Template Name: Home Page
  *
  * @package Michael_Taiwo_Scholarship
  * 

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Template Name: Single Blog Post
+ *
+ * @package Michael_Taiwo_Scholarship
+ */
+
 get_header('single');
 
 while (have_posts()) : the_post();

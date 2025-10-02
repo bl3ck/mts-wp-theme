@@ -1,6 +1,8 @@
 <?php
 /**
- * The template for displaying all single posts
+ * Template Name: Single Team Member
+ * 
+ * The template for displaying single team member posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *

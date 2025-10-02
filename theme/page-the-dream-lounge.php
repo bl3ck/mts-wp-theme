@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: MT Contact Page
+ * Template Name: MT Dream Lounge Page
  *
  * @package Michael_Taiwo_Scholarship
  * 

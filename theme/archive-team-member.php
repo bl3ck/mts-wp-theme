@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template Name: Team Members Archive
+ *
+ * @package Michael_Taiwo_Scholarship
+ */
+
+get_header(); ?>
 
 <?php
 $args = array(

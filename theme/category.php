@@ -1,4 +1,10 @@
 <?php
+/**
+ * Template Name: Category Archive
+ *
+ * @package Michael_Taiwo_Scholarship
+ */
+
 get_header();
 
 // Get current category
