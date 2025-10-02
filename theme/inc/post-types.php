@@ -391,3 +391,44 @@ function create_mt_partners_type() {
 }
 
 add_action( 'init', 'create_mt_partners_type' );
+
+// E-Meet
+function create_mt_emeet_type() {
+    $labels = array(
+        'name'               => 'E-Meets',
+        'singular_name'      => 'E-Meet',
+        'menu_name'          => 'E-Meets',
+        'add_new'            => 'Add New',
+        'add_new_item'       => 'Add New E-Meet',
+        'edit'               => 'Edit',
+        'edit_item'          => 'Edit E-Meet',
+        'new_item'           => 'New E-Meet',
+        'view'               => 'View',
+        'view_item'          => 'View E-Meet',
+        'search_items'       => 'Search E-Meets',
+        'not_found'          => 'No E-Meets found',
+        'not_found_in_trash' => 'No E-Meets found in trash',
+        'parent'             => 'Parent E-Meet'
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'e-meets' ),
+        'menu_icon'          => 'dashicons-video-alt3',
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'show_in_rest'       => true,
+        'supports'           => array( 'title', 'editor', 'thumbnail' ),
+        'taxonomies'         => array( 'post_tag' )
+    );
+    register_post_type( 'e-meet', $args );
+}
+
+add_action( 'init', 'create_mt_emeet_type' );
