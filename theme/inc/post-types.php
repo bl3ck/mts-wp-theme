@@ -392,23 +392,23 @@ function create_mt_partners_type() {
 
 add_action( 'init', 'create_mt_partners_type' );
 
-// E-Meet
-function create_mt_emeet_type() {
+// MT-Meet
+function create_mt_meet_type() {
     $labels = array(
-        'name'               => 'E-Meets',
-        'singular_name'      => 'E-Meet',
-        'menu_name'          => 'E-Meets',
+        'name'               => 'MT-Meets',
+        'singular_name'      => 'MT-Meet',
+        'menu_name'          => 'MT-Meets',
         'add_new'            => 'Add New',
-        'add_new_item'       => 'Add New E-Meet',
+        'add_new_item'       => 'Add New MT-Meet',
         'edit'               => 'Edit',
-        'edit_item'          => 'Edit E-Meet',
-        'new_item'           => 'New E-Meet',
+        'edit_item'          => 'Edit MT-Meet',
+        'new_item'           => 'New MT-Meet',
         'view'               => 'View',
-        'view_item'          => 'View E-Meet',
-        'search_items'       => 'Search E-Meets',
-        'not_found'          => 'No E-Meets found',
-        'not_found_in_trash' => 'No E-Meets found in trash',
-        'parent'             => 'Parent E-Meet'
+        'view_item'          => 'View MT-Meet',
+        'search_items'       => 'Search MT-Meets',
+        'not_found'          => 'No MT-Meets found',
+        'not_found_in_trash' => 'No MT-Meets found in trash',
+        'parent'             => 'Parent MT-Meet'
     );
 
     $args = array(
@@ -418,7 +418,7 @@ function create_mt_emeet_type() {
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => array( 'slug' => 'e-meets' ),
+        'rewrite'            => array( 'slug' => 'mt-meets' ),
         'menu_icon'          => 'dashicons-video-alt3',
         'capability_type'    => 'post',
         'has_archive'        => true,
@@ -428,7 +428,7 @@ function create_mt_emeet_type() {
         'supports'           => array( 'title', 'editor', 'thumbnail' ),
         'taxonomies'         => array( 'post_tag' )
     );
-    register_post_type( 'e-meet', $args );
+    register_post_type( 'mt-meet', $args );
 }
 
-add_action( 'init', 'create_mt_emeet_type' );
+add_action( 'init', 'create_mt_meet_type' );

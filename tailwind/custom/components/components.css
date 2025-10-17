@@ -59,7 +59,7 @@ body:not(.wp-admin) .entry-content {
 	@apply float-right ml-8;
 }
 
-.single-e-meet {
+.single-mt-meet {
 	.wp-block-gallery {
 		@apply grid grid-cols-1 md:grid-cols-2 gap-4;
 

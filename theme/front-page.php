@@ -140,7 +140,7 @@ $apply_link   = get_field('application_link');
                     <ul>
                         <li><a href="<?php echo get_post_type_archive_link('winner') ?>">Winners</a></li>
                         <li><a href="<?php echo get_post_type_archive_link('impact-story') ?>">Stories of Impact</a></li>
-                        <li><a href="<?php echo get_post_type_archive_link('e-meet') ?>">MT E-Meet</a></li>
+                        <li><a href="<?php echo get_post_type_archive_link('mt-meet') ?>">MT Meets</a></li>
                         <li><a href="<?php echo get_page_url_by_title('Scholar Network') ?>">Scholar Network</a></li>
                     </ul>
                 </div>
