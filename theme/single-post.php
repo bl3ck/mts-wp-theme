@@ -93,6 +93,77 @@ while (have_posts()) : the_post();
                 <?php endif; ?>
             </div>
 
+            <?php
+            // Get co-authors from ACF field
+            $co_authors = get_field('authors');
+            
+            // Get primary author bio
+            $author_bio = get_user_meta($author_id, 'description', true);
+            
+            // Check if we should show contributors section (primary author has bio OR there are co-authors)
+            $show_contributors = !empty($author_bio) || ($co_authors && is_array($co_authors) && count($co_authors) > 0);
+            
+            if ($show_contributors):
+            ?>
+            <!-- Contributors Section -->
+            <div class="max-w-2xl mx-auto mt-16 pt-8 border-t border-gray-200">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                    <?php echo ($co_authors && count($co_authors) > 0) ? 'Contributors' : 'About the Author'; ?>
+                </h3>
+                <div class="grid grid-cols-1 gap-6">
+                    <?php if (!empty($author_bio)): ?>
+                        <!-- Primary Author -->
+                        <div class="flex items-start gap-4">
+                            <img src="<?= esc_url($author_image ?: get_avatar_url($author_id, ['size' => 800])) ?>" 
+                                 alt="<?= esc_attr($author_full_name) ?>" 
+                                 class="size-24 rounded-xl object-cover flex-shrink-0">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-0 text-xl"><?= esc_html($author_full_name) ?></h4>
+                                <p class="text-lg text-gray-600"><?= esc_html($author_bio) ?></p>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php
+                    // Show co-authors
+                    if ($co_authors && is_array($co_authors)):
+                        foreach ($co_authors as $co_author):
+                            $co_author_id = $co_author['ID'];
+                            $co_author_image = get_field('profile-image', 'user_' . $co_author_id);
+                            $co_first_name = get_user_meta($co_author_id, 'first_name', true);
+                            $co_last_name = get_user_meta($co_author_id, 'last_name', true);
+                            $co_author_full_name = trim($co_first_name . ' ' . $co_last_name);
+                            $co_author_bio = get_user_meta($co_author_id, 'description', true);
+                            
+                            // Fallback to display name if first/last name not set
+                            if (empty($co_author_full_name)) {
+                                $co_author_full_name = $co_author['display_name'];
+                            }
+                            
+                            // Fallback to avatar if profile image not set
+                            if (empty($co_author_image)) {
+                                $co_author_image = get_avatar_url($co_author_id, ['size' => 800]);
+                            }
+                    ?>
+                        <div class="flex items-start gap-4">
+                            <img src="<?= esc_url($co_author_image) ?>" 
+                                 alt="<?= esc_attr($co_author_full_name) ?>" 
+                                 class="size-24 rounded-xl object-cover flex-shrink-0">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-0 text-xl"><?= esc_html($co_author_full_name) ?></h4>
+                                <?php if ($co_author_bio): ?>
+                                    <p class="text-lg text-gray-600"><?= esc_html($co_author_bio) ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php 
+                        endforeach;
+                    endif;
+                    ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <!-- News Letter Signup -->
             <div class="max-w-2xl mx-auto mt-16 contact-form bg-mt-cream p-6 sm:p-12 rounded-xl shadow-md">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Be Part of a Global Dreaming Tribe</h2>

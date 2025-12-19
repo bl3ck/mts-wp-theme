@@ -94,10 +94,26 @@ $categories = get_categories([
                     <!-- Author and Date -->
                     <div class="flex items-center justify-between pt-4 border-t border-gray-100">
                         <div class="flex items-center gap-3">
-                            <img 
-                                :src="post.author.avatar" 
-                                :alt="post.author.name"
-                                class="w-8 h-8 rounded-full object-cover">
+                            <!-- Author Images Stack -->
+                            <div :class="post.co_authors && post.co_authors.length > 0 ? 'flex -space-x-2' : 'flex'">
+                                <img 
+                                    :src="post.author.avatar" 
+                                    :alt="post.author.name"
+                                    :class="post.co_authors && post.co_authors.length > 0 ? 'w-8 h-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-200' : 'w-8 h-8 rounded-full object-cover'">
+                                <template x-if="post.co_authors && post.co_authors.length > 0">
+                                    <template x-for="(coAuthor, index) in post.co_authors.slice(0, 3)" :key="coAuthor.id">
+                                        <img 
+                                            :src="coAuthor.avatar" 
+                                            :alt="coAuthor.name"
+                                            class="w-8 h-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-200">
+                                    </template>
+                                </template>
+                                <template x-if="post.co_authors && post.co_authors.length > 3">
+                                    <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white ring-1 ring-gray-200 flex items-center justify-center">
+                                        <span class="text-xs font-medium text-gray-600" x-text="'+' + (post.co_authors.length - 3)"></span>
+                                    </div>
+                                </template>
+                            </div>
                             <div class="select-text">
                                 <div class="text-sm font-medium text-gray-900" x-text="post.author.name"></div>
                                 <div class="text-xs text-gray-500" x-text="post.date"></div>

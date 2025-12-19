@@ -52,6 +52,33 @@ function load_blog_posts_ajax()
 
             $author_full_name = trim($first_name . ' ' . $last_name);
 
+            // Get co-authors
+            $co_authors_data = [];
+            $co_authors = get_field('authors');
+            if ($co_authors && is_array($co_authors)) {
+                foreach ($co_authors as $co_author) {
+                    $co_author_id = $co_author['ID'];
+                    $co_author_image = get_field('profile-image', 'user_' . $co_author_id);
+                    $co_first_name = get_user_meta($co_author_id, 'first_name', true);
+                    $co_last_name = get_user_meta($co_author_id, 'last_name', true);
+                    $co_author_full_name = trim($co_first_name . ' ' . $co_last_name);
+                    
+                    if (empty($co_author_full_name)) {
+                        $co_author_full_name = $co_author['display_name'];
+                    }
+                    
+                    if (empty($co_author_image)) {
+                        $co_author_image = get_avatar_url($co_author_id, ['size' => 96]);
+                    }
+                    
+                    $co_authors_data[] = [
+                        'id' => $co_author_id,
+                        'name' => $co_author_full_name,
+                        'avatar' => $co_author_image
+                    ];
+                }
+            }
+
             // Get categories
             $post_categories = get_the_category();
             $categories = [];
@@ -94,6 +121,7 @@ function load_blog_posts_ajax()
                     'avatar' => $author_image,
                     'link'   => get_author_posts_url($author_id)
                 ],
+                'co_authors'     => $co_authors_data,
                 'categories'     => $categories,
                 'comment_count'  => get_comments_number(),
             ];

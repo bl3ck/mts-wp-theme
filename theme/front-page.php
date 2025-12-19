@@ -412,6 +412,32 @@ $apply_link   = get_field('application_link');
 
                     $author_full_name = trim($first_name . ' ' . $last_name);
 
+                    // Get co-authors
+                    $co_authors = get_field('authors');
+                    $co_authors_array = [];
+                    if ($co_authors && is_array($co_authors)) {
+                        foreach ($co_authors as $co_author) {
+                            $co_author_id = $co_author['ID'];
+                            $co_author_image = get_field('profile-image', 'user_' . $co_author_id);
+                            $co_first_name = get_user_meta($co_author_id, 'first_name', true);
+                            $co_last_name = get_user_meta($co_author_id, 'last_name', true);
+                            $co_author_full_name = trim($co_first_name . ' ' . $co_last_name);
+                            
+                            if (empty($co_author_full_name)) {
+                                $co_author_full_name = $co_author['display_name'];
+                            }
+                            
+                            if (empty($co_author_image)) {
+                                $co_author_image = get_avatar_url($co_author_id, ['size' => 96]);
+                            }
+                            
+                            $co_authors_array[] = [
+                                'name' => $co_author_full_name,
+                                'image' => $co_author_image
+                            ];
+                        }
+                    }
+
                 ?>
                     <article class="flex flex-col rounded-3xl bg-white shadow-md ring-1 shadow-black/5 ring-black/5 hover:shadow-xl transition-shadow duration-300 select-text overflow-hidden">
                         <!-- Featured Image -->
@@ -447,10 +473,26 @@ $apply_link   = get_field('application_link');
                             <!-- Author and Date -->
                             <div class="flex items-center justify-between pt-4 border-t border-gray-100">
                                 <div class="flex items-center gap-3">
-                                    <img
-                                        src="<?php echo esc_url($author_image); ?>"
-                                        alt="<?php echo esc_attr($author_full_name); ?>"
-                                        class="w-8 h-8 rounded-full object-cover">
+                                    <!-- Author Images Stack -->
+                                    <div class="<?php echo !empty($co_authors_array) ? 'flex -space-x-2' : 'flex'; ?>">
+                                        <img
+                                            src="<?php echo esc_url($author_image); ?>"
+                                            alt="<?php echo esc_attr($author_full_name); ?>"
+                                            class="<?php echo !empty($co_authors_array) ? 'w-8 h-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-200' : 'w-8 h-8 rounded-full object-cover'; ?>">
+                                        <?php if (!empty($co_authors_array)): ?>
+                                            <?php foreach (array_slice($co_authors_array, 0, 3) as $co_author): ?>
+                                                <img
+                                                    src="<?php echo esc_url($co_author['image']); ?>"
+                                                    alt="<?php echo esc_attr($co_author['name']); ?>"
+                                                    class="w-8 h-8 rounded-full object-cover border-2 border-white ring-1 ring-gray-200">
+                                            <?php endforeach; ?>
+                                            <?php if (count($co_authors_array) > 3): ?>
+                                                <div class="w-8 h-8 rounded-full bg-gray-200 border-2 border-white ring-1 ring-gray-200 flex items-center justify-center">
+                                                    <span class="text-xs font-medium text-gray-600">+<?php echo count($co_authors_array) - 3; ?></span>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </div>
                                     <div class="select-text">
                                         <div class="text-sm font-medium text-gray-900">
                                             <?php echo esc_html($author_full_name); ?>
