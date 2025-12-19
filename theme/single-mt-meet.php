@@ -31,9 +31,11 @@ get_header();
     $meeting_location = get_field('location');
     $subtitle = get_field('subtitle');
     $gallery = get_field('gallery');
+    $video_link = get_field('video_link');
+    $embed_code = wp_oembed_get($video_link);
 ?>
 
- <!-- Event Details Bar -->
+    <!-- Event Details Bar -->
     <section class="border-b border-gray-100">
         <div class="page-container py-6">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
@@ -78,19 +80,26 @@ get_header();
 
     <!-- Main Content -->
     <div class="page-container pt-16 pb-8">
-        <section class="">
-            <div class="grid sm:grid-cols-2 gap-8">
-                <div class="">
-                    <div class="prose prose-lg max-w-none text-gray-700">
-                        <?php echo wp_kses_post($content); ?>
-                    </div>
-                </div>
-                <div>
-                    <img src="<?php echo $meeting_agenda; ?>" alt="Meeting Agenda" class="w-full h-auto rounded-lg shadow-lg">
+        <div class="grid sm:grid-cols-2 gap-8">
+            <div class="">
+                <div class="prose prose-lg max-w-none text-gray-700">
+                    <?php echo wp_kses_post($content); ?>
                 </div>
             </div>
-        </section>
+            <div>
+                <img src="<?php echo $meeting_agenda; ?>" alt="Meeting Agenda" class="w-full h-auto rounded-lg shadow-lg">
+            </div>
+        </div>
     </div>
+
+    <?php if ($video_link): ?>
+        <div class="page-container py-8">
+            <h2>Video Highlight</h2>
+            <div class="responsive-video shadow-md rounded-2xl overflow-hidden">
+                <?php echo $embed_code; ?>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <!-- Gallery -->
     <div class="pb-16 gallery-section">
@@ -108,24 +117,24 @@ get_header();
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            
+
             <!-- Previous Button -->
             <button id="lightbox-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
             </button>
-            
+
             <!-- Next Button -->
             <button id="lightbox-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
             </button>
-            
+
             <!-- Image -->
             <img id="lightbox-image" src="" alt="" class="max-w-full max-h-full object-contain">
-            
+
             <!-- Image Counter -->
             <div id="lightbox-counter" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black bg-opacity-50 px-3 py-1 rounded"></div>
         </div>
@@ -201,163 +210,163 @@ get_header();
 <?php endwhile; ?>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxCounter = document.getElementById('lightbox-counter');
-    const closeBtn = document.getElementById('lightbox-close');
-    const prevBtn = document.getElementById('lightbox-prev');
-    const nextBtn = document.getElementById('lightbox-next');
-    
-    let currentImageIndex = 0;
-    let galleryImages = [];
-    let isInitialized = false;
-    
-    // Find all gallery images and make them clickable
-    function initializeGallery() {
-        // Prevent multiple initializations
-        if (isInitialized) return;
-        
-        // Clear any existing data
-        galleryImages = [];
-        
-        const galleries = document.querySelectorAll('.gallery-section .gallery, .wp-block-gallery');
-        
-        galleries.forEach(gallery => {
-            const images = gallery.querySelectorAll('img');
-            images.forEach((img, index) => {
-                // Only process images that haven't been processed yet
-                if (!img.hasAttribute('data-lightbox-processed')) {
-                    // Store image data
-                    galleryImages.push({
-                        src: img.src,
-                        alt: img.alt || ''
-                    });
-                    
-                    // Mark as processed
-                    img.setAttribute('data-lightbox-processed', 'true');
-                    
-                    // Make image clickable
-                    img.style.cursor = 'pointer';
-                    
-                    // Use a closure to capture the correct index
-                    const imageIndex = galleryImages.length - 1;
-                    img.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        openLightbox(imageIndex);
-                    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const closeBtn = document.getElementById('lightbox-close');
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
+
+        let currentImageIndex = 0;
+        let galleryImages = [];
+        let isInitialized = false;
+
+        // Find all gallery images and make them clickable
+        function initializeGallery() {
+            // Prevent multiple initializations
+            if (isInitialized) return;
+
+            // Clear any existing data
+            galleryImages = [];
+
+            const galleries = document.querySelectorAll('.gallery-section .gallery, .wp-block-gallery');
+
+            galleries.forEach(gallery => {
+                const images = gallery.querySelectorAll('img');
+                images.forEach((img, index) => {
+                    // Only process images that haven't been processed yet
+                    if (!img.hasAttribute('data-lightbox-processed')) {
+                        // Store image data
+                        galleryImages.push({
+                            src: img.src,
+                            alt: img.alt || ''
+                        });
+
+                        // Mark as processed
+                        img.setAttribute('data-lightbox-processed', 'true');
+
+                        // Make image clickable
+                        img.style.cursor = 'pointer';
+
+                        // Use a closure to capture the correct index
+                        const imageIndex = galleryImages.length - 1;
+                        img.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            openLightbox(imageIndex);
+                        });
+                    }
+                });
+            });
+
+            isInitialized = true;
+        }
+
+        function openLightbox(index) {
+            // Ensure we have valid images and index
+            if (!galleryImages.length || index < 0 || index >= galleryImages.length) {
+                return;
+            }
+
+            currentImageIndex = index;
+            updateLightboxImage();
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxImage() {
+            if (galleryImages[currentImageIndex]) {
+                lightboxImage.src = galleryImages[currentImageIndex].src;
+                lightboxImage.alt = galleryImages[currentImageIndex].alt;
+                lightboxCounter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+            }
+        }
+
+        function nextImage() {
+            if (galleryImages.length > 1) {
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                updateLightboxImage();
+            }
+        }
+
+        function prevImage() {
+            if (galleryImages.length > 1) {
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                updateLightboxImage();
+            }
+        }
+
+        // Event listeners
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeLightbox();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextImage();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevImage();
+            });
+        }
+
+        // Close on background click
+        if (lightbox) {
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
                 }
             });
-        });
-        
-        isInitialized = true;
-    }
-    
-    function openLightbox(index) {
-        // Ensure we have valid images and index
-        if (!galleryImages.length || index < 0 || index >= galleryImages.length) {
-            return;
         }
-        
-        currentImageIndex = index;
-        updateLightboxImage();
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeLightbox() {
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        document.body.style.overflow = '';
-    }
-    
-    function updateLightboxImage() {
-        if (galleryImages[currentImageIndex]) {
-            lightboxImage.src = galleryImages[currentImageIndex].src;
-            lightboxImage.alt = galleryImages[currentImageIndex].alt;
-            lightboxCounter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
-        }
-    }
-    
-    function nextImage() {
-        if (galleryImages.length > 1) {
-            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-            updateLightboxImage();
-        }
-    }
-    
-    function prevImage() {
-        if (galleryImages.length > 1) {
-            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-            updateLightboxImage();
-        }
-    }
-    
-    // Event listeners
-    if (closeBtn) {
-        closeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            closeLightbox();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('hidden')) {
+                switch (e.key) {
+                    case 'Escape':
+                        e.preventDefault();
+                        closeLightbox();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        prevImage();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        nextImage();
+                        break;
+                }
+            }
         });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            nextImage();
-        });
-    }
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            prevImage();
-        });
-    }
-    
-    // Close on background click
-    if (lightbox) {
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightbox) {
+
+        // Initialize the gallery with a slight delay to ensure DOM is fully ready
+        setTimeout(function() {
+            initializeGallery();
+        }, 100);
+
+        // Also listen for page visibility changes to prevent issues with browser back/forward
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
                 closeLightbox();
             }
         });
-    }
-    
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        if (!lightbox.classList.contains('hidden')) {
-            switch(e.key) {
-                case 'Escape':
-                    e.preventDefault();
-                    closeLightbox();
-                    break;
-                case 'ArrowLeft':
-                    e.preventDefault();
-                    prevImage();
-                    break;
-                case 'ArrowRight':
-                    e.preventDefault();
-                    nextImage();
-                    break;
-            }
-        }
     });
-    
-    // Initialize the gallery with a slight delay to ensure DOM is fully ready
-    setTimeout(function() {
-        initializeGallery();
-    }, 100);
-    
-    // Also listen for page visibility changes to prevent issues with browser back/forward
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            closeLightbox();
-        }
-    });
-});
 </script>
 
 <?php get_footer(); ?>
