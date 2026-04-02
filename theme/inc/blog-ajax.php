@@ -103,7 +103,7 @@ function load_blog_posts_ajax()
             }
 
             // Get featured image
-            $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+            $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'large');
             if (!$featured_image) {
                 $featured_image = get_template_directory_uri() . '/assets/default-post.jpg';
             }

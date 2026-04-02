@@ -202,4 +202,5 @@ require get_template_directory() . '/inc/acf.php';
 require get_template_directory() . '/inc/init.php';
 require get_template_directory() . '/inc/blog-ajax.php';
 require get_template_directory() . '/inc/blog-category-ajax.php';
+require get_template_directory() . '/inc/newsletter-ajax.php';
 require get_template_directory() . '/inc/countdown.php';
