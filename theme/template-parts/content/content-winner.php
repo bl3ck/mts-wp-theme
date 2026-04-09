@@ -39,7 +39,9 @@ $awarded_year = $awarded_year_id ? get_term($awarded_year_id)->name : '';
 // CGPA (regular ACF field, not taxonomy)
 $cgpa = get_field('cgpa');
 
-$cgpa = get_field('cgpa');
+// After-headshot (current / recent photo). Featured image acts as "before".
+$after_headshot = get_field('after_headshot');
+$has_after      = ! empty( $after_headshot ) && ! empty( $after_headshot['ID'] );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -48,11 +50,36 @@ $cgpa = get_field('cgpa');
 
 		<div class="grid sm:grid-cols-2 align-start items-start justify-start gap-6 gap-6">
 			<div class="">
-				<?php
-				echo get_the_post_thumbnail(get_the_ID(), 'large', [
-					'class' => 'w-96 sm:w-[24rem] h-auto rounded shadow-md object-contain'
-				]);
-				?>
+				<?php if ( $has_after ) : ?>
+					<div class="w-full sm:w-[24rem]">
+						<div class="grid grid-cols-2 gap-3">
+							<figure class="m-0">
+								<?php
+								echo get_the_post_thumbnail( get_the_ID(), 'medium_large', [
+									'class' => 'w-full aspect-[3/4] object-cover rounded shadow-md',
+									'alt'   => esc_attr( get_the_title() . ' — before' ),
+								] );
+								?>
+								<figcaption class="mt-2 text-center text-xs uppercase tracking-wider text-gray-500 font-spartan">Before</figcaption>
+							</figure>
+							<figure class="m-0">
+								<?php
+								echo wp_get_attachment_image( $after_headshot['ID'], 'medium_large', false, [
+									'class' => 'w-full aspect-[3/4] object-cover rounded shadow-md',
+									'alt'   => esc_attr( get_the_title() . ' — after' ),
+								] );
+								?>
+								<figcaption class="mt-2 text-center text-xs uppercase tracking-wider text-gray-500 font-spartan">After</figcaption>
+							</figure>
+						</div>
+					</div>
+				<?php else : ?>
+					<?php
+					echo get_the_post_thumbnail( get_the_ID(), 'large', [
+						'class' => 'w-96 sm:w-[24rem] h-auto rounded shadow-md object-contain',
+					] );
+					?>
+				<?php endif; ?>
 			</div>
 			<div class="space-y-2 text-sm text-gray-600">
 				<?php if (!empty($awarded_year)) : ?>

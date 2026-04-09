@@ -197,6 +197,8 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/after-theme-setup.php';
 require get_template_directory() . '/inc/post-types.php';
+require get_template_directory() . '/inc/winner-fields.php';
+require get_template_directory() . '/inc/winner-admin.php';
 require get_template_directory() . '/inc/footer-customizer.php';
 require get_template_directory() . '/inc/acf.php';
 require get_template_directory() . '/inc/init.php';
