@@ -11,11 +11,11 @@ if ( ! defined( 'MT_VERSION' ) ) {
 	/*
 	 * Set the theme’s version number.
 	 *
-	 * This is used primarily for cache busting. If you use `npm run bundle`
-	 * to create your production build, the value below will be replaced in the
-	 * generated zip file with a timestamp, converted to base 36.
+	 * This is used primarily for cache busting. `make zip` and `make release`
+	 * increment the value below before building a production archive so the
+	 * packaged assets and runtime cache keys stay in sync.
 	 */
-	define( 'MT_VERSION', '0.1.0' );
+	define( 'MT_VERSION', '0.1.5' );
 }
 
 if ( ! defined( 'MT_TYPOGRAPHY_CLASSES' ) ) {

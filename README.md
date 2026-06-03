@@ -21,6 +21,15 @@ A custom theme based on \_tw
 6. Run `npm run bundle`
 7. Upload the resulting zip file to your site using the “Upload Theme” button on the “Add Themes” administration page
 
+You can also use `make` for common release tasks:
+
+* `make build` runs the production asset build
+* `make zip` increments the patch version, rebuilds assets, and creates a versioned archive like `michael-taiwo-scholarship-0.1.3.zip`
+* `make bump-minor` increments the source version like `0.1.1 -> 0.2.0`
+* `make bump-major` increments the source version like `0.1.1 -> 1.0.0`
+* `make release` runs `make zip` and copies that same versioned zip into `dist/`
+* `make version` prints the current source version
+
 Or [deploy with the tool of your choice](https://underscoretw.com/docs/deployment/#h-other-deployment-options)!
 
 ## Full Documentation

@@ -58,6 +58,11 @@ if ($partner_query->have_posts()) {
 
 $deadline_raw = get_field('application_deadline');
 $apply_link   = get_field('application_link');
+$newsletter_archive_url = get_post_type_archive_link('newsletter');
+
+if (!$newsletter_archive_url) {
+    $newsletter_archive_url = home_url('/newsletters/');
+}
 
 ?>
 
@@ -107,6 +112,7 @@ $apply_link   = get_field('application_link');
                     <ul>
                         <li><a href="<?php echo get_page_url_by_title('About') ?>">Our Mission</a></li>
                         <li><a href="<?php echo get_post_type_archive_link('report') ?>">Impact Reports</a></li>
+                        <li><a href="<?php echo esc_url($newsletter_archive_url); ?>">The Dream Lounge</a></li>
                         <li><a href="<?php echo get_page_url_by_title('Volunteer') ?>">Become a Volunteer</a></li>
                     </ul>
                 </div>
@@ -390,7 +396,9 @@ $apply_link   = get_field('application_link');
     <div class="page-container">
         <div>
             <h2 class="font-mono text-xs/5 font-semibold tracking-widest text-gray-500 uppercase data-dark:text-gray-400">Our Blog</h2>
-            <h3 class="mt-2 text-4xl font-medium tracking-tighter text-pretty text-gray-950 data-dark:text-white sm:text-5xl">The Dream Lounge</h3>
+            <h3 class="mt-2 text-4xl font-medium tracking-tighter text-pretty text-gray-950 data-dark:text-white sm:text-5xl">
+                <a href="<?php echo esc_url($newsletter_archive_url); ?>" class="hover:text-green-600 transition-colors duration-200">The Dream Lounge</a>
+            </h3>
         </div>
 
         <?php if ($posts->have_posts()) : ?>

@@ -29,7 +29,7 @@ get_header(); ?>
                         <a href="<?php the_permalink(); ?>" class="text-blue-500 hover:underline">View report</a>
                     </div>
                 </div>
-    <?
+    <?php
                 $image = get_the_post_thumbnail_url(get_the_ID(), 'large');
                 $testimonial = get_field('short_quote'); //get_the_content();
                 $name = get_the_title();
