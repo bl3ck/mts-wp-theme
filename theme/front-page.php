@@ -181,28 +181,28 @@ if (!$newsletter_archive_url) {
         <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-8 align-middle">
             <div class="flex flex-col gap-4 align-middle">
                 <div class="flex flex-col">
-                    <h4 class="font-semibold text-2xl mb-2">43,000+</h4>
+                    <h4 class="font-semibold text-2xl mb-2">50,000+</h4>
                     <p class="font-bold text-md">Applicants Worldwide</p>
                     <p class="line-clamp-3 opacity-80">From over 65 countries across 5 continents.</p>
                 </div>
             </div>
             <div class="flex flex-col gap-4 align-middle">
                 <div class="flex flex-col">
-                    <h4 class="font-semibold text-2xl mb-2">230+</h4>
+                    <h4 class="font-semibold text-2xl mb-2">300+</h4>
                     <p class="font-bold text-md">Scholars Supported</p>
                     <p class="line-clamp-3 opacity-80">Breaking barriers to global education.</p>
                 </div>
             </div>
             <div class="flex flex-col gap-4 align-middle">
                 <div class="flex flex-col">
-                    <h4 class="font-semibold text-2xl mb-2">$5,000,000+</h4>
+                    <h4 class="font-semibold text-2xl mb-2">$6,000,000+</h4>
                     <p class="font-bold text-md">Total Scholarship Funding</p>
                     <p class="line-clamp-3 opacity-80">Invested directly in future global leaders.</p>
                 </div>
             </div>
             <div class="flex flex-col gap-4 align-middle">
                 <div class="flex flex-col">
-                    <h4 class="font-semibold text-2xl mb-2">500+</h4>
+                    <h4 class="font-semibold text-2xl mb-2">600+</h4>
                     <p class="font-bold text-md">Graduate School Acceptances</p>
                     <p class="line-clamp-3 opacity-80">Across top universities worldwide.</p>
                 </div>

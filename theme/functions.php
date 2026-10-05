@@ -15,7 +15,7 @@ if ( ! defined( 'MT_VERSION' ) ) {
 	 * increment the value below before building a production archive so the
 	 * packaged assets and runtime cache keys stay in sync.
 	 */
-	define( 'MT_VERSION', '0.1.6' );
+	define( 'MT_VERSION', '0.1.7' );
 }
 
 if ( ! defined( 'MT_TYPOGRAPHY_CLASSES' ) ) {
