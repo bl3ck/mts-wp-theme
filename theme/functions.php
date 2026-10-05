@@ -15,7 +15,7 @@ if ( ! defined( 'MT_VERSION' ) ) {
 	 * increment the value below before building a production archive so the
 	 * packaged assets and runtime cache keys stay in sync.
 	 */
-	define( 'MT_VERSION', '0.1.5' );
+	define( 'MT_VERSION', '0.1.6' );
 }
 
 if ( ! defined( 'MT_TYPOGRAPHY_CLASSES' ) ) {
@@ -199,6 +199,7 @@ require get_template_directory() . '/inc/after-theme-setup.php';
 require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/winner-fields.php';
 require get_template_directory() . '/inc/winner-admin.php';
+require get_template_directory() . '/inc/mentor-admin.php';
 require get_template_directory() . '/inc/footer-customizer.php';
 require get_template_directory() . '/inc/acf.php';
 require get_template_directory() . '/inc/init.php';

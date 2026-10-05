@@ -83,6 +83,52 @@ function create_mt_winner_type() {
 
 add_action( 'init', 'create_mt_winner_type' );
 
+function mts_register_mentor_post_type() {
+    register_post_type( 'mentor', [
+        'labels' => [
+            'name'          => __( 'Mentors', 'mts' ),
+            'singular_name' => __( 'Mentor', 'mts' ),
+            'add_new_item'  => __( 'Add New Mentor', 'mts' ),
+            'edit_item'     => __( 'Edit Mentor', 'mts' ),
+            'search_items'  => __( 'Search Mentors', 'mts' ),
+            'not_found'    => __( 'No mentors found', 'mts' ),
+        ],
+        'public'             => false,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_rest'       => false,
+        'exclude_from_search' => true,
+        'rewrite'            => false,
+        'query_var'          => false,
+        'has_archive'        => false,
+        'menu_icon'          => 'dashicons-businessperson',
+        'supports'           => [ 'title', 'editor', 'thumbnail' ],
+    ] );
+}
+add_action( 'init', 'mts_register_mentor_post_type' );
+
+function mts_register_winner_scholarship_taxonomy() {
+    register_taxonomy( 'winner_scholarship', [ 'winner' ], [
+        'labels' => [
+            'name'          => __( 'Scholarships Awarded', 'mts' ),
+            'singular_name' => __( 'Scholarship Awarded', 'mts' ),
+            'add_new_item'  => __( 'Add New Scholarship', 'mts' ),
+            'search_items'  => __( 'Search Scholarships', 'mts' ),
+        ],
+        'public'             => false,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_admin_column'  => true,
+        'show_in_rest'       => false,
+        'hierarchical'       => false,
+        'rewrite'            => false,
+        'query_var'          => false,
+        'meta_box_cb'        => false,
+    ] );
+}
+add_action( 'init', 'mts_register_winner_scholarship_taxonomy' );
+
 
 // Stories of Impact
 function create_mt_impact_stories_type() {

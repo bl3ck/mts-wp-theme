@@ -32,6 +32,21 @@ You can also use `make` for common release tasks:
 
 Or [deploy with the tool of your choice](https://underscoretw.com/docs/deployment/#h-other-deployment-options)!
 
+## Winner Administration
+
+1. Add mentor records under **Mentors > Add New** and publish them to make them available for assignment. Mentors are admin-only records, not public profiles.
+2. Edit a winner and use **Scholar Record (Admin Only)** to select their assigned mentor and enter their graduate school, program, enrollment city/region, enrollment country, and scholarships awarded. Each winner can have one mentor; a mentor can have many winners. Mentor edit screens show the first 20 accessible assigned winners and link to the full filtered list.
+3. In **Winners**, select any combination of Status, graduate school, program/degree, enrollment city, enrollment country, scholarship, mentor, and existing taxonomy filters, then click **Filter**. Search and WordPress post-status/date filters also apply.
+4. Click **Export filtered winners (CSV)** to download every matching record, across all pages. Leaving filters empty exports all accessible non-trashed winners. Export is restricted to users with both `manage_options` and winner-editing permission, normally administrators.
+
+Enrollment Country and Enrollment City / Region describe the graduate institution, not the winner's home address or country of origin. Use **Status: Enrolled** plus **Enrollment Country: United States** or **United Kingdom** to find current students there, and optionally narrow by city. The existing `current_country` and `current_location` storage keys are retained; review previously entered residence values for enrollment accuracy.
+
+School, program, city, and country dropdowns use saved values; enter consistent spellings so equivalent values appear together. **Scholarships Awarded** allows multiple reusable awards per winner, e.g. Mastercard Foundation Scholars Program and Erasmus Mundus. Add or select awards within the winner record; manage their names under **Winners > Scholarships Awarded**. Scholarship filters and CSV exports use these same awards.
+
+The CSV contains private scholar data, including contact email and private notes. Handle it accordingly. The new fields and mentor assignments are not added to public winner templates or REST responses.
+
+Run the dependency-free regression checks with `php tests/winner-admin.php`. These cover field registration, combined filters, export permissions, CSV safety, and multi-page exports; they do not replace testing in a running WordPress admin session.
+
 ## Full Documentation
 
 ### Fundamentals
